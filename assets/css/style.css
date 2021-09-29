@@ -42,5 +42,20 @@ h1 {
 
 #forecast-info {
     margin-top: 20px;
-    margin-left: 30px;
 }
+
+.card-body {
+    background-color: #338b9d;
+}
+
+h5.card-title {
+    font-size: x-large;
+    font-weight: bold;
+    color: #f4f1ec;
+}
+
+p.card-text {
+    color: #f4f1ec;
+}
+
+
