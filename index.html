@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main>
+        <div class="container-fluid floating">
+            <!-- Search area -->
+            <div class="row">
+                <div class="col-3">
+                    <h2>Search for a city:</h2>
+                    <input type="text" class="form-control" placeholder="Toronto">
+                    <div class="d-grid">
+                        <button id="search-btn" class="btn btn-secondary" type="button">Search</button>
+                    </div>
+                    <hr>
+                </div>
+                <!-- City details -->
+                <div class="col-9 border border-dark">
+                    <div id="current-weather">
+                        <h2>Atlanta</h2>
+                        <p>Temperature: 26 C</p>
+                        <p>Wind: 11 km/hr</p>
+                        <p>Humidity: 40%</p>
+                        <p>Index: 4.5</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Search storage area -->
+            <div class="row">
+                <div class="col-3 prev-search">
+                    <h2>Previous Results</h2>
+                </div>
+                <!-- 5-day Forecast -->
+                <div class="col-9">
+                    <div id="forecast-info">
+                        <h2>Atlanta</h2>
+                        <p>Temperature: 26 C</p>
+                        <p>Wind: 11 km/hr</p>
+                        <p>Humidity: 40%</p>
+                        <p>Index: 4.5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
