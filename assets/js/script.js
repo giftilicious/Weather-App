@@ -13,7 +13,7 @@ let weatherAPIKey = '0dec5f9d90212222e001cf9eff9b7150';
 searchBtnEl.addEventListener('click', function (event) {
     event.preventDefault();
     let cityName = document.querySelector('.form-control').value;
-    requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "=&appid=" + weatherAPIKey;
+    requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + weatherAPIKey;
     if (cityName == "") {
         alert("Enter a city name");
     } else {
@@ -23,24 +23,29 @@ searchBtnEl.addEventListener('click', function (event) {
         })
         .then(function (data) {
             console.log(data);
-            const temperature = document.createElement("p");
+            let city = document.createElement('h3');
+            city.textContent = data.name + data.weather.icon;
+            currentWeatherEl.appendChild(city);
+            // futureForecast.appendChild(city);
+            
+            let temperature = document.createElement("p");
             temperature.textContent = "Temperature: " + data.main.feels_like;
-            currentWeatherEl.appendChild(temperature) 
-            futureForecast.appendChild(temperature) 
+            currentWeatherEl.appendChild(temperature); 
+            // futureForecast.appendChild(temperature); 
 
-            // const wind = document.createElement("p");
-            // wind.textContent = "Wind: " + data.main.humidity;
-            // currentWeatherEl.appendChild(wind)
+            let wind = document.createElement("p");
+            wind.textContent = "Wind: " + data.wind.gust + " km/hr";
+            currentWeatherEl.appendChild(wind)
             // futureForecast.appendChild(wind)
 
-            // const humidity = document.createElement("p");
-            // humidity.textContent = "Humidity: " + data.main.humidity;
-            // currentWeatherEl.appendChild(humidity)
+            let humidity = document.createElement("p");
+            humidity.textContent = "Humidity: " + data.main.humidity;
+            currentWeatherEl.appendChild(humidity)
             // futureForecast.appendChild(humidity)  
 
-            // const uvIndex = document.createElement("p");
-            // uvIndex.textContent = "UV Index: " + data.main.humidity;
-            // currentWeatherEl.appendChild(uvIndex) 
+            let uvIndex = document.createElement("p");
+            uvIndex.textContent = "UV Index: " + data.main.humidity;
+            currentWeatherEl.appendChild(uvIndex) 
             // futureForecast.appendChild(uvIndex) 
             })           
     }
