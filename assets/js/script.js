@@ -1,8 +1,7 @@
 let searchBtnEl = document.querySelector('#search-btn');
 let currentWeatherEl = document.querySelector('#current-weather');
-let oldResultsEl = document.querySelector('#oldResults');
 let weatherAPIKey = '0dec5f9d90212222e001cf9eff9b7150';
-let storedResults =JSON.parse(localStorage.getItem('cities'))|| []
+let storedResults = JSON.parse(localStorage.getItem('cities')) || []
 
 searchBtnEl.addEventListener('click', function (event) {
     event.preventDefault();
@@ -12,7 +11,7 @@ searchBtnEl.addEventListener('click', function (event) {
 
 for (let index = 0; index < storedResults.length; index++) {
     makeList(storedResults[index])
-    
+
 }
 
 function makeList(city) {
@@ -23,12 +22,12 @@ function makeList(city) {
 
 function getCurrentWeather(cityName) {
 
-if(storedResults.indexOf(cityName)==-1){
-    storedResults.push(cityName)
-    localStorage.setItem('cities', JSON.stringify(storedResults))
-    makeList(cityName)
-}
-    
+    if (storedResults.indexOf(cityName) == -1) {
+        storedResults.push(cityName)
+        localStorage.setItem('cities', JSON.stringify(storedResults))
+        makeList(cityName)
+    }
+
     requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=" + weatherAPIKey;
     if (cityName == "") {
         alert("Enter a city name");
@@ -39,7 +38,7 @@ if(storedResults.indexOf(cityName)==-1){
             })
             .then(function (data) {
                 console.log(data);
-                currentWeatherEl.innerHTML=""
+                currentWeatherEl.innerHTML = ""
                 let location = document.createElement('h3');
                 let weatherUrl = data.weather[0].icon;
                 let icon = `https://openweathermap.org/img/w/${weatherUrl}.png`;
@@ -56,7 +55,7 @@ if(storedResults.indexOf(cityName)==-1){
 
                 let humidity = document.createElement("p");
                 humidity.textContent = "Humidity: " + data.main.humidity;
-                
+
                 currentWeatherEl.appendChild(humidity);
 
                 weatherForecast(data.coord.lat, data.coord.lon);
@@ -77,7 +76,7 @@ function weatherForecast(lat, lon) {
 
         let fiveday = document.querySelector('#fiveday');
 
-        fiveday.innerHTML=""
+        fiveday.innerHTML = ""
         //for loop to create the card element
         for (let index = 0; index < 5; index++) {
             //put the data from the api call on the element
